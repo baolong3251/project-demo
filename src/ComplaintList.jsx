@@ -22,6 +22,9 @@ const ComplaintList = () => {
         {
             title: 'Complaint ID',
             dataIndex: 'complaint_id',
+            defaultSortOrder: 'descend',
+            sorter: (a, b) => a.complaint_id - b.complaint_id,
+            sortDirections: ['descend'],
             key: 'complaint_id',
             render: (text) => <a>{text}</a>,
         },
@@ -57,8 +60,8 @@ const ComplaintList = () => {
             key: 'product',
             dataIndex: 'product',
             render: (_, record) => {
-                return(
-                    record.product.division
+                return (
+                    record.product.division.slice(9)
                 )
             },
         },
@@ -84,20 +87,20 @@ const ComplaintList = () => {
         },
         {
             title: 'Product Name',
-            key: 'product',
+            key: 'product_name',
             dataIndex: 'product',
             render: (_, record) => {
-                return(
+                return (
                     record.product.product_name
                 )
             },
         },
         {
             title: 'OEM Supplier',
-            key: 'product',
+            key: 'oem',
             dataIndex: 'product',
             render: (_, record) => {
-                return(
+                return (
                     record.product.oem
                 )
             },
@@ -125,56 +128,56 @@ const ComplaintList = () => {
     ];
     const [data, setData] = useState(
         Data.data
-    //     [
-    //     {
-    //         key: '1',
-    //         complaint_id: 'OCS-0000069',
-    //         jposCipi: "696969",
-    //         complaint_status: 'Processing',
-    //         product: {division: "PI"},
-    //         cAssignedTo: "mmm",
-    //         createdDate: "2022-05-19",
-    //         country: "Japan",
-    //         productName: "Jupiter Max",
-    //         oemSupplier: "bstar demo",
-    //         mdv: "",
-    //         productReturn: "Shipped",
-    //         crl: "In-Progress",
-    //         gfe: "Open",
-    //     },
-    //     {
-    //         key: '2',
-    //         complaint_id: 'OCS-0000069',
-    //         jposCipi: "696969",
-    //         complaint_status: 'New',
-    //         product: {division: "cc"},
-    //         cAssignedTo: "mmm",
-    //         createdDate: "2022-05-19",
-    //         country: "Japan",
-    //         productName: "Jupiter Max",
-    //         oemSupplier: "bstar demo",
-    //         mdv: "",
-    //         productReturn: "Shipped",
-    //         crl: "In-Progress",
-    //         gfe: "Open",
-    //     },
-    //     {
-    //         key: '3',
-    //         complaint_id: 'OCS-0000069',
-    //         jposCipi: "696969",
-    //         complaint_status: 'Reopen',
-    //         product: {division: "PI"},
-    //         cAssignedTo: "mmm",
-    //         createdDate: "2022-05-19",
-    //         country: "Japan",
-    //         productName: "Jupiter Max",
-    //         oemSupplier: "bstar demo",
-    //         mdv: "",
-    //         productReturn: "Shipped",
-    //         crl: "In-Progress",
-    //         gfe: "Open",
-    //     },
-    // ]
+        //     [
+        //     {
+        //         key: '1',
+        //         complaint_id: 'OCS-0000069',
+        //         jposCipi: "696969",
+        //         complaint_status: 'Processing',
+        //         product: {division: "PI"},
+        //         cAssignedTo: "mmm",
+        //         createdDate: "2022-05-19",
+        //         country: "Japan",
+        //         productName: "Jupiter Max",
+        //         oemSupplier: "bstar demo",
+        //         mdv: "",
+        //         productReturn: "Shipped",
+        //         crl: "In-Progress",
+        //         gfe: "Open",
+        //     },
+        //     {
+        //         key: '2',
+        //         complaint_id: 'OCS-0000069',
+        //         jposCipi: "696969",
+        //         complaint_status: 'New',
+        //         product: {division: "cc"},
+        //         cAssignedTo: "mmm",
+        //         createdDate: "2022-05-19",
+        //         country: "Japan",
+        //         productName: "Jupiter Max",
+        //         oemSupplier: "bstar demo",
+        //         mdv: "",
+        //         productReturn: "Shipped",
+        //         crl: "In-Progress",
+        //         gfe: "Open",
+        //     },
+        //     {
+        //         key: '3',
+        //         complaint_id: 'OCS-0000069',
+        //         jposCipi: "696969",
+        //         complaint_status: 'Reopen',
+        //         product: {division: "PI"},
+        //         cAssignedTo: "mmm",
+        //         createdDate: "2022-05-19",
+        //         country: "Japan",
+        //         productName: "Jupiter Max",
+        //         oemSupplier: "bstar demo",
+        //         mdv: "",
+        //         productReturn: "Shipped",
+        //         crl: "In-Progress",
+        //         gfe: "Open",
+        //     },
+        // ]
     );
 
     const handleDelete = (id) => {
