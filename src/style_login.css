@@ -1,0 +1,79 @@
+.login-form {
+    min-width: 400px;
+    width: 400px;
+    background-color: white;
+    padding: 30px;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.login-form-logo {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+
+}
+
+.login-form-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    float: right;
+}
+
+.btn {
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+    align-items: center;
+}
+
+.login {
+    height: 100vh;
+    background-image: url("https://oemservices.aero/wp-content/uploads/2020/07/home-oemservices.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-left-side {
+    min-width: 400px;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+
+    position: absolute;
+    width: 800px;
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+
+    .login-left-side {
+
+        width: 500px;
+
+    }
+
+}
+
+
+
+@media only screen and (max-width: 739px) {
+
+    .login-left-side {
+
+        width: 350px;
+
+    }
+
+}

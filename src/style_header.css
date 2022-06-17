@@ -1,0 +1,47 @@
+.site-layout .header {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header .header-right {
+    margin: 15px;
+    flex-wrap: wrap;
+}
+
+.header .header-right .button-change{
+    align-items: center;
+    display: flex;
+}
+
+.header .header-right .button-change .button-change-icon{
+    font-size: 15px;
+}
+
+.header .header-right .header-right-language {
+    font-weight: bold;
+    color: black;
+}
+
+.header .header-right .header-right-account {
+    font-weight: bold;
+    color: #0066cc;
+}
+
+@media only screen and (max-width: 365px) {
+    .header .header-right .button-change{
+        width: 120px;
+        font-size: 12px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        
+    }
+
+    .header .header-right .button-change .button-change-icon{
+        font-size: 13px;
+    }
+}

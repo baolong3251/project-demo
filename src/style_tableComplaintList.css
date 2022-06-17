@@ -1,0 +1,9 @@
+.tableComplaintList .ant-table-thead > tr > th{
+    /* color: #1890ff; */
+    color: #4d98d1;;
+    background-color: #f3f6f8;
+}
+
+.tableComplaintList .ant-table-tbody{
+    text-align: center;
+}

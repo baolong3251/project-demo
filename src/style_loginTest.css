@@ -1,0 +1,30 @@
+.loginTest{
+    min-height: 100vh;
+    position: relative;
+}
+
+.loginTest-left{
+    width: 1500px;
+    min-height: 100vh;
+    background-color: green;
+    position: absolute;
+    bottom: -600px;
+    left: -450px;
+    transform: rotate(35deg);
+    z-index: 2;
+}
+
+.loginTest-center{
+    width: 1000px;
+    background-color: blue;
+    margin: auto;
+    
+}
+
+.loginTest-right{
+    width: 1000px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

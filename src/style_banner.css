@@ -1,0 +1,24 @@
+.site-statistic-demo-card {
+    padding: 10px;
+    background: #ececec;
+}
+
+.card-container{
+    background-color: #008490;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    flex-wrap: wrap;
+    
+}
+
+.card-container .card-content-right {
+    font-size: 20px;
+    
+}

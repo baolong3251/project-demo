@@ -1,0 +1,29 @@
+.button-change {
+    background-color: #0066cc;
+    border-radius: 10px;
+}
+
+.trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.logo {
+    /* height: 32px; */
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 34px;
+    
+    background: rgba(255, 255, 255, 0.3);
+    background-image: url('https://cdn.jobhopin.com/avatars/cd2815c2-3d95-4976-803a-317c3c951b3c.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
