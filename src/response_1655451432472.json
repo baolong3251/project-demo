@@ -5,7 +5,7 @@
     {
       "complaint_id": 11,
       "bussiness_division": "string",
-      "jpos_cipi_id": "string",
+      "jpos_cipi_id": "BRK2205012345",
       "complaint_assign_to": "QC QA",
       "related_complaint_id": 0,
       "complaint_status": "New",
@@ -105,7 +105,7 @@
     {
       "complaint_id": 12,
       "bussiness_division": "string",
-      "jpos_cipi_id": "string",
+      "jpos_cipi_id": "1111",
       "complaint_assign_to": "QC QA",
       "related_complaint_id": null,
       "complaint_status": "New",
@@ -205,7 +205,7 @@
     {
       "complaint_id": 10,
       "bussiness_division": "string",
-      "jpos_cipi_id": "updated string",
+      "jpos_cipi_id": "424234",
       "complaint_assign_to": "QC QA",
       "related_complaint_id": 2,
       "complaint_status": "Processing",
@@ -305,7 +305,7 @@
     {
       "complaint_id": 13,
       "bussiness_division": "string",
-      "jpos_cipi_id": "string",
+      "jpos_cipi_id": "09448882",
       "complaint_assign_to": "QC QA",
       "related_complaint_id": 0,
       "complaint_status": "New",

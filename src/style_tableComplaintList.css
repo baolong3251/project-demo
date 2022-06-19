@@ -1,9 +1,110 @@
+.ant-table{
+    font-size: 14px;
+    width: 100%;
+}
+
 .tableComplaintList .ant-table-thead > tr > th{
-    /* color: #1890ff; */
-    color: #4d98d1;;
+    /* color: #4d98d1; */
+    /* color: #4b89ad; */
+    color: #4b89ad;
     background-color: #f3f6f8;
+}
+
+.complaintList-title{
+    display: flex; 
+    align-items: center;
 }
 
 .tableComplaintList .ant-table-tbody{
     text-align: center;
 }
+
+/* .ant-table-column-sorter-up, .ant-table-column-sorter-down{
+    display: none;
+} */
+
+.ant-table-column-sorter{
+    display: none;
+}
+
+.sortIcon:active{
+    color: #4d98d1;
+}
+
+.complaintList-text{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block; 
+    text-overflow: ellipsis;
+    font-size: 14px;
+    max-width: 100px;
+}
+
+@media only screen and (min-width: 1023px) and (max-width: 1500px) {
+
+    .ant-table{
+        
+        max-width: 1300px;
+        overflow-x: scroll;
+    }
+
+    .complaintList-text{
+        max-width: 90px;
+    }
+
+}
+
+
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+
+    .ant-table{
+        
+        max-width: 1023px;
+        overflow-x: scroll;
+    }
+
+    .complaintList-status{
+        display: flex;
+        justify-content: center!important;
+        text-align: center;
+    }
+
+    .complaintList-text{
+        max-width: 80px;
+    }
+    
+    .complaintList-statusText{
+        display: none;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 739px) {
+
+    .ant-table{
+        max-width: 739px;
+        overflow-x: scroll;
+    }
+
+    .complaintList-status{
+        display: flex;
+        justify-content: center!important;
+        text-align: center;
+    }
+
+    .complaintList-text{
+        max-width: 80px;
+    }
+
+    .complaintList-statusText{
+        display: none;
+    }
+
+}
+
+/* .ant-table-column-sorter::after{
+    content: "v"!important;
+    
+} */
