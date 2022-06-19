@@ -82,6 +82,16 @@
         overflow-x: scroll;
     }
 
+    .complaintList-status{
+        display: flex;
+        justify-content: center!important;
+        text-align: center;
+    }
+
+    .complaintList-text{
+        max-width: 80px;
+    }
+
     .complaintList-statusText{
         display: none;
     }
