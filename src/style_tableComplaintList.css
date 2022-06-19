@@ -19,10 +19,6 @@
     text-align: center;
 }
 
-/* .ant-table-column-sorter-up, .ant-table-column-sorter-down{
-    display: none;
-} */
-
 .ant-table-column-sorter{
     display: none;
 }
@@ -43,7 +39,6 @@
 @media only screen and (min-width: 1023px) and (max-width: 1500px) {
 
     .ant-table{
-        
         max-width: 1300px;
         overflow-x: scroll;
     }
@@ -58,7 +53,6 @@
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
 
     .ant-table{
-        
         max-width: 1023px;
         overflow-x: scroll;
     }
@@ -88,23 +82,8 @@
         overflow-x: scroll;
     }
 
-    .complaintList-status{
-        display: flex;
-        justify-content: center!important;
-        text-align: center;
-    }
-
-    .complaintList-text{
-        max-width: 80px;
-    }
-
     .complaintList-statusText{
         display: none;
     }
 
 }
-
-/* .ant-table-column-sorter::after{
-    content: "v"!important;
-    
-} */
