@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.ant-select-selection-item{
+    font-weight: 500;
+}
+
 .tableComplaintList .ant-table-tbody{
     text-align: center;
 }
@@ -96,4 +100,29 @@
         display: none;
     }
 
+    .complaintList-dropDownButton{
+        display: flex;
+        align-items: center;
+        gap: 0;
+        padding: 5px;
+
+    }
+
+    .complaintList-dropDownButton-text{
+        display: none;
+        margin: 0;
+    }
+
+}
+
+@media only screen and (max-width: 765px) {
+    .complaintList-filterShowContainer{
+        display: none!important;
+    }
+}
+
+@media only screen and (max-width: 515px) {
+    .complaintList-searchContainer{
+        display: none!important;
+    }
 }

@@ -5,10 +5,10 @@ import "./style_searchForm.css"
 
 const { Search } = Input;
 
-const SearchForm = () => {
+const SearchForm = ({ handleChange, ...otherProps }) => {
   return (
-    <div className='searchForm'>
-        <Input style={{borderRadius: "10px"}} prefix={<SearchOutlined />}  placeholder="Search Account Name, OCS Account, Email"/>
+    <div className='searchForm' style={{flex: "1"}}>
+        <Input onChange={handleChange} style={{borderRadius: "10px"}} prefix={<SearchOutlined />}  placeholder="Search Account Name, OCS Account, Email" {...otherProps}/>
     </div>
   )
 }

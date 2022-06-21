@@ -1,34 +1,80 @@
-import { Button } from 'antd'
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import ExportExcelCheckBox from './ExportExcelCheckBox'
 import ExportExcelModal from './ExportExcelModal'
+import { Space, Table, Button, Col, Row, Typography, Pagination, Select } from 'antd';
+import { LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
+import SearchForm from './SearchForm';
+import Data from "./response_1655451432472.json"
 
 const TestPage = () => {
     const [showModal, setShowModal] = useState(false)
     const [dataForExport, setDataForExport] = useState([])
+    const [input, setInput] = useState('')
+    const [data, setData] = useState(
+        Data.data
+    );
 
     const handleGetData = (value) => {
-        var newArray = dataForExport
-        newArray = dataForExport.find(x => x === value)
-        if(newArray){
+        // const found = value.some(r=> dataForExport.indexOf(r) >= 0)
+        // if(!found){
+        //     setDataForExport(dataForExport.concat(value))
+        // }
+        
+        var arr = dataForExport.concat(value)
+        var actualArr = arr.filter(b => value.some(a => a === b))
+            actualArr = actualArr.filter((item, pos) => actualArr.indexOf(item) === pos)
+        setDataForExport(actualArr)
+    }
 
-        } else { 
-            setDataForExport(dataForExport.concat(value))
-        }
+    const handleExportData = () => {
+        
     }
 
     console.log(dataForExport)
 
     return (
         <div>
+            <Row style={{ padding: "10px", background: "#f7f8fa", alignItems: "center" }}>
+                <Col flex={3}>
+
+                </Col>
+                <Col flex={7}>
+                    <div>
+                        <Row style={{ alignItems: "center" }}>
+                            <Col flex={4}>
+                                <SearchForm handleChange={(e) => setInput(e.target.value)} />
+                            </Col>
+                            <Col flex={3} style={{ display: "flex", justifyContent: "flex-end" }}>
+                                <Space>
+                                    <div>
+                                        1 - {data.length > 20 ? "20" : data.length} of {data.length}
+                                    </div>
+                                    <div>
+                                        <Button disabled>
+                                            <LeftOutlined />
+                                        </Button>
+                                        <Button>
+                                            <RightOutlined />
+                                        </Button>
+                                    </div>
+                                </Space>
+                            </Col>
+
+                        </Row>
+                    </div>
+
+
+                </Col>
+            </Row>
             <Button type="primary" onClick={() => setShowModal(!showModal)}>
                 Open Modal
             </Button>
-            <ExportExcelModal visible={showModal} setShow={setShowModal}>
+            <ExportExcelModal handleExportData={handleExportData} visible={showModal} setShow={setShowModal}>
                 <ExportExcelCheckBox handleGetData={handleGetData} options={["PR Status", "Product Received Date (BSC)", "Contact", "Planned-Packing Date"]} title={"Basic Information"} />
-                <ExportExcelCheckBox handleGetData={handleGetData} options={["BR Status", "Product Received Date (BSC)", "Contact into", "Planned-Packing Date"]} title={"Basic Information"} />
-                <ExportExcelCheckBox handleGetData={handleGetData} options={["CR Status", "Product Received Date (BSC)", "Contact", "Planned-Packing Date"]} title={"Basic Information"} />
+                <ExportExcelCheckBox handleGetData={handleGetData} options={["BR Status", "Product Send Date (BSC)", "Contract into", "Planned-release Date"]} title={"Basic Information"} />
+                <ExportExcelCheckBox handleGetData={handleGetData} options={["CR Status", "Product caca Date (BSC)", "Consact", "Planned-nice Date"]} title={"Basic Information"} />
             </ExportExcelModal>
         </div>
     )

@@ -18,6 +18,8 @@
 
 .header .header-right .button-change .button-change-icon{
     font-size: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .header .header-right .header-right-language {
@@ -29,19 +31,67 @@
     font-weight: bold;
     color: #0066cc;
 }
+@media only screen and (max-width: 1023px) {
 
-@media only screen and (max-width: 365px) {
     .header .header-right .button-change{
-        width: 120px;
+        
         font-size: 12px;
         align-items: center;
         display: flex;
         justify-content: center;
-        margin: auto;
         
+        padding: 5px;
+        margin: 0;
     }
 
     .header .header-right .button-change .button-change-icon{
-        font-size: 13px;
+        font-size: 14px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        transform: translate(3.5px, 0);
+    }
+
+    .header-right-buttonText{
+        display: none;
+        
+    }
+
+    .header-right-languageText{
+        display: none;
+    }
+
+    .header-right-languageIcon{
+        transform: translate(3.5px, 0);
+    }
+
+    .header-right-accountText{
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 563px) {
+    .header .header-right .button-change{
+        
+        font-size: 12px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+        padding: 5px;
+        margin: 0;
+    }
+
+    .header .header-right .button-change .button-change-icon{
+        font-size: 14px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        transform: translate(3.5px, 0);
+    }
+
+    .header-right{
+        display: none;
     }
 }

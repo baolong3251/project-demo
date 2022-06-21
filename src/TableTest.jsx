@@ -37,6 +37,15 @@ function TableTest() {
               color = 'volcano';
             }
 
+            // • 
+            // style={{
+            //     color:
+            //         `${record.complaint_status === "New" ? "green" : record.complaint_status === "Close" ? "red" : record.complaint_status.length > 6 ? '#ef00ff' : '#088aa1'}`,
+            //     fontSize: '20px',
+            //     fontWeight: "bold",
+            //     transform: "translate(0, -2.5px)"
+            // }}
+
             return (
               <Tag color={color} key={tag}>
                 {tag.toUpperCase()}

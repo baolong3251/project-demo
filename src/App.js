@@ -12,6 +12,7 @@ import ExportExcelModal from './ExportExcelModal';
 import TestPage from './TestPage';
 import LoginTest from './LoginTest';
 import ComplaintList from './ComplaintList';
+import HeaderComplaintList from './HeaderComplaintList';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
           <Route exact path='/testpage' element={<Sidebar><TestPage /></Sidebar>} />
 
           <Route exact path='/complaints' element={<Sidebar><ComplaintList /></Sidebar>} />
+
+          <Route exact path='/testthing' element={<Sidebar><HeaderComplaintList /></Sidebar>} />
         </Routes>
       
     </div>

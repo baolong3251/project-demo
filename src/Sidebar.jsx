@@ -34,6 +34,9 @@ const Sidebar = props => {
                     <Menu.Item key={'4'} icon={<UserOutlined />}>
                         <Link to={'/complaints'}>complaints</Link>
                     </Menu.Item>
+                    <Menu.Item key={'5'} icon={<UserOutlined />}>
+                        <Link to={'/testthing'}>test thing</Link>
+                    </Menu.Item>
 
                 </Menu>
             </Sider>

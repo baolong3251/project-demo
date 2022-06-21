@@ -71,12 +71,12 @@ const Header = (props) => {
                 </div>
 
                 <Space size={'large'} className='header-right'>
-                    <Button type='primary' className='button-change'><PlusCircleOutlined className='button-change-icon' /> New Complaint</Button>
+                    <Button type='primary' className='button-change'><PlusCircleOutlined className='button-change-icon' /> <div className='header-right-buttonText'>New Complaint</div></Button>
                     <Dropdown overlay={menuLanguage} trigger={['click']}>
                         <a className='header-right-language' onClick={e => e.preventDefault()}>
                         <Space>
-                            <Avatar src="https://cdn.britannica.com/25/4825-004-F1975B92/Flag-United-Kingdom.jpg" size="small" icon={<UserOutlined />} />
-                            English
+                            <Avatar className='header-right-languageIcon' src="https://cdn.britannica.com/25/4825-004-F1975B92/Flag-United-Kingdom.jpg" size="small" icon={<UserOutlined />} />
+                            <div className='header-right-languageText'>English</div>
                         </Space>
                         </a>
                     </Dropdown>
@@ -84,7 +84,7 @@ const Header = (props) => {
                         <a className='header-right-account' onClick={e => e.preventDefault()}>
                         <Space>
                             <Avatar icon={<UserOutlined />} />
-                            Name
+                            <div className='header-right-accountText'>Name</div>
                             <DownOutlined />
                         </Space>
                         </a>

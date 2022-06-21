@@ -1,4 +1,4 @@
-import { Checkbox, Divider, Card, Typography, Space } from 'antd';
+import { Checkbox, Divider, Card, Typography, Space, Form } from 'antd';
 import { useState } from 'react';
 
 const CheckboxGroup = Checkbox.Group;
@@ -23,6 +23,7 @@ const ExportExcelCheckBox = (props) => {
         setCheckedList(e.target.checked ? plainOptions : []);
         setIndeterminate(false);
         setCheckAll(e.target.checked);
+        props.handleGetData(plainOptions)
     };
     
     return (
@@ -35,7 +36,9 @@ const ExportExcelCheckBox = (props) => {
                     </Checkbox>
                 </Space>
                 <Divider style={{ border: "none", marginBottom: "0" }} />
-                <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+                <Form.Item>
+                    <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
+                </Form.Item>
             </Card>
         </>
     )

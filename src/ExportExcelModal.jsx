@@ -1,11 +1,11 @@
-import { Button, Modal, Typography, Space } from 'antd';
+import { Button, Modal, Typography, Space, Form } from 'antd';
 import { useState } from 'react';
 import ExportExcelCheckBox from './ExportExcelCheckBox';
 import { ExportOutlined } from '@ant-design/icons'
 
 const { Title, Text, Link } = Typography;
 
-const ExportExcelModal = ({ visible, children, setShow }) => {
+const ExportExcelModal = ({ handleExportData, visible, children, setShow }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
@@ -27,7 +27,7 @@ const ExportExcelModal = ({ visible, children, setShow }) => {
                 okButtonProps={{ style: { display: 'none' } }}
                 footer={
                     <div style={{ margin: "auto", display: "flex", justifyContent: "center" }}>
-                        <Button type="primary" style={{ backgroundColor: "#00558f", borderRadius: "10px" }}><ExportOutlined style={{fontSize: "16px"}}/> Export</Button>
+                        <Button onClick={() => handleExportData()} type="primary" style={{ backgroundColor: "#00558f", borderRadius: "10px" }}><ExportOutlined style={{fontSize: "16px"}}/> Export</Button>
                     </div>
                 }
             >
@@ -37,8 +37,10 @@ const ExportExcelModal = ({ visible, children, setShow }) => {
                     <ExportExcelCheckBox />
 
                     <ExportExcelCheckBox /> */}
-
-                    {children}
+                    <Form>
+                        {children}
+                    </Form>
+                    
                 </Space>
             </Modal>
         </>

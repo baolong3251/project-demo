@@ -1,0 +1,72 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+}
+
+.layout .background {
+    background: #fff;
+}
+
+.ant-layout-header {
+    background: #DEF1FF !important;
+}
+
+.title {
+    color: #1890ff;
+}
+
+.headerRight {
+    align-items: center;
+}
+
+.titleCollapsePanel {
+    background-color: #fff;
+    border: 1px solid gray;
+    border-bottom: 1px solid gray !important;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.formInputBasicInfo {
+    margin-bottom: 15px;
+}
+
+.formInputBasicInfo input {
+    height: 35px !important;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.ant-select-selector {
+    margin-top: 5px;
+    height: 35px !important;
+    border-radius: 5px !important;
+}
+
+textarea.ant-input {
+    border-radius: 5px;
+}
+
+/* mobile */
+@media only screen and (max-width: 46.1875em) {
+    
+}
+
+/* Tab and ipad */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    
+}
