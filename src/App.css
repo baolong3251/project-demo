@@ -1,3 +1,9 @@
 @import 'antd/dist/antd.css';
 
-  
+html{
+    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+

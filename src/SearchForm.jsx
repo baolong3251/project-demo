@@ -3,8 +3,6 @@ import { Input } from 'antd';
 import { SearchOutlined } from "@ant-design/icons"
 import "./style_searchForm.css"
 
-const { Search } = Input;
-
 const SearchForm = ({ handleChange, ...otherProps }) => {
   return (
     <div className='searchForm' style={{flex: "1"}}>

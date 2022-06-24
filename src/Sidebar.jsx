@@ -7,13 +7,14 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import HeaderApp from "./HeaderApp"
 import "./style_sidebar.css"
 const { Sider, Content } = Layout;
 
 const Sidebar = props => {
     const [collapsed, setCollapsed] = useState(false);
     return (
-        <Layout style={{minHeight: "100vh"}}>
+        <Layout className="sidebar" style={{minHeight: "100vh"}}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo" />
                 <Menu
@@ -41,7 +42,7 @@ const Sidebar = props => {
                 </Menu>
             </Sider>
             <Layout className="site-layout">
-                <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+                <HeaderApp collapsed={collapsed} setCollapsed={setCollapsed} />
                 <Content
                     className="site-layout-background"
                     style={{

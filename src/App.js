@@ -13,6 +13,7 @@ import TestPage from './TestPage';
 import LoginTest from './LoginTest';
 import ComplaintList from './ComplaintList';
 import HeaderComplaintList from './HeaderComplaintList';
+import PageForTest from './PageForTest';
 
 function App() {
   return (
@@ -28,21 +29,25 @@ function App() {
       </Routes> */}
        
          
-      
+       <Sidebar>
+        <div className='content'>
         <Routes>
+          
           <Route exact path='/login' element={<Login />} />
 
-          <Route exact path='/' element={<Sidebar><SU_uses /></Sidebar>} />
+          <Route exact path='/' element={<SU_uses />} />
           
-          <Route exact path='/something' element={<Sidebar><Something /></Sidebar>} />
+          <Route exact path='/something' element={<PageForTest />} />
           
-          <Route exact path='/testpage' element={<Sidebar><TestPage /></Sidebar>} />
+          <Route exact path='/testpage' element={<TestPage />} />
 
-          <Route exact path='/complaints' element={<Sidebar><ComplaintList /></Sidebar>} />
+          <Route exact path='/complaints' element={<ComplaintList />} />
 
-          <Route exact path='/testthing' element={<Sidebar><HeaderComplaintList /></Sidebar>} />
+          <Route exact path='/testthing' element={<HeaderComplaintList />} />
+          
         </Routes>
-      
+        </div>
+      </Sidebar>
     </div>
   );
 }

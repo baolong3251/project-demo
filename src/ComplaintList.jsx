@@ -5,123 +5,114 @@ import SearchForm from './SearchForm';
 import { Link } from "react-router-dom"
 import "./style_tableComplaintList.css"
 import moment from 'moment'
-import Data from "./response_1655718870994.json"
 import axios from 'axios';
 
 const { Option } = Select;
+const searchPlaceHolder = "Search OEM Supllier, Complaint ID, Product Name, JPOS/CIPI, Division, Complaint Assigned To, Country"
+
+
+// import getCom from 
+
+// getCom
+
+// const response = await getCom()
 
 const ComplaintList = () => {
     const [_, forceUpdate] = useReducer(x => x + 1, 0);
     const [input, setInput] = useState('')
     const [divisionForSort, setDivsionForSort] = useState([])
-    const [complaints, setComplaints] = useState(Data)
-    const [data, setData] = useState(
-        complaints.data
-    );
+    const [complaints, setComplaints] = useState([])
+    const [baseData, setBaseData] = useState([]);
 
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     const getComplaints = async () => {
-    //         const response = await axios.get("http://10.0.106.27:3001/api/v1/complaints", {
-    //             headers: {
-    //                 Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6IlN1cHBsaWVyIiwiaWF0IjoxNjU1NzgxNTY1LCJleHAiOjE2NTU4NTM1NjV9.N6yod8K2om0JjlaYtR-9NX0I84Blm6xF9fbobW-lWmU`,
-    //             },
-    //         });
-    //         console.log(response)
-    //         setComplaints(response.data);
-    //     };
-
-    //     const getDivisionSort = () => {
-    //         const arrUniq = [...new Map(data.map(v => [v.product.division.slice(9), v])).values()]
-    //         const newArray = arrUniq.map((arr) => arr.product.division.slice(9))
-    //         setDivsionForSort(newArray)
-    //     };
-
-    //     getComplaints();
-    //     getDivisionSort();
-    // }, [])
-
-    // useEffect(() => {
-    //     if(complaints.length > 0) {
-    //         setData(complaints.data)
-    //     }
-    // }, [complaints])
+    useEffect(() => {
+        const getComplaints = async () => {
+            const response = await axios.get("http://10.0.106.27:3001/api/v1/complaints", {
+                headers: {
+                    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6IlFBIiwiaWF0IjoxNjU1OTU5NjMwLCJleHAiOjE2NTY2Nzk2MzB9.Zp5W7BXZqhbMMm0eg4fLLLiBxhLP_uG6vPe71JHsQM8`,
+                },
+            });
+            setComplaints(response.data.data.items);
+            setBaseData(response.data.data.items)
+        };
+        
+        getComplaints();
+    
+    }, [])
 
     useEffect(() => {
         const getData = () => {
-            const arrUniq = [...new Map(data.map(v => [v.product.division.slice(9), v])).values()]
+            const arrUniq = [...new Map(baseData.map(v => [v.product.division.slice(9), v])).values()]
             const newArray = arrUniq.map((arr) => arr.product.division.slice(9))
             setDivsionForSort(newArray)
         };
         getData();
-    }, [])
+    }, [baseData])
 
     const handleSortAsc = () => {
-        var newArray = data
+        var newArray = baseData
         newArray = newArray.sort((a, b) => {
             return a.complaint_id - b.complaint_id;
         })
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     const handleSortJposCipiDesc = () => {
-        var newArray = data
+        var newArray = baseData
         newArray = newArray.sort((a, b) => {
             return b.jpos_cipi_id.localeCompare(a.jpos_cipi_id);
         })
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     const handleSortJposCipiAsc = () => {
-        var newArray = data
+        var newArray = baseData
         newArray = newArray.sort((a, b) => {
             return a.jpos_cipi_id.localeCompare(b.jpos_cipi_id);
         })
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     const handleSortDesc = () => {
-        var newArray = data
+        var newArray = baseData
         newArray = newArray.sort((a, b) => {
             return b.complaint_id - a.complaint_id;
         })
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     const handleSortStatus = (value) => {
-        var newArray = complaints.data
+        var newArray = baseData
         newArray = newArray.filter((x) => x.complaint_status === value)
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     const handleSortDivision = (value) => {
-        var newArray = complaints.data
+        var newArray = baseData
         newArray = newArray.filter((x) => x.product.division.slice(9) === value)
-        setData(newArray)
+        setComplaints(newArray)
         forceUpdate()
     }
 
     useEffect(() => {
 
 
-        const filteredData = complaints.data?.filter(
+        const filteredData = baseData?.filter(
             (x) => x?.complaint_id?.toString().toLowerCase().includes(input.toLowerCase()) ||
                 x?.product?.oem?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.product?.product_name?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.jpos_cipi_id?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.complaint_status?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.complaint_assign_to?.toLowerCase().includes(input.toLowerCase()) ||
+                x?.complaint_assign_to?.name?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.product?.division?.slice(9)?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.country_of_event?.toLowerCase().includes(input.toLowerCase()) ||
                 x?.productReturn?.toLowerCase().includes(input.toLowerCase())
         )
-        setData(filteredData)
+        setComplaints(filteredData)
 
     }, [input])
 
@@ -155,7 +146,7 @@ const ComplaintList = () => {
                 },
             dataIndex: 'complaint_id',
             key: 'complaint_id',
-            render: (text) => <a className='complaintList-text' style={{ color: "#4b89ad", textDecoration: "underline", fontWeight: "500" }}>{text}</a>,
+            render: (text) => <Link to={`/complaints/${text}`} className='complaintList-text' style={{ color: "#4b89ad", textDecoration: "underline", fontWeight: "500" }}>{text}</Link>,
         },
         {
             title:
@@ -184,7 +175,7 @@ const ComplaintList = () => {
                     )
                 },
             dataIndex: 'jpos_cipi_id',
-            key: 'jpos_cipi_id',
+            
             render: (text) => <div className='complaintList-text'>{text}</div>
         },
         {
@@ -203,7 +194,7 @@ const ComplaintList = () => {
                                         color: "#4b89ad",
                                     }}
                                     bordered={false}
-                                    onSelect={(value) => { value === "All" ? setData(complaints.data) : handleSortStatus(value) }}
+                                    onSelect={(value) => { value === "All" ? setComplaints(baseData) : handleSortStatus(value) }}
                                 >
                                     <Option value="All">Show All</Option>
                                     <Option value="New">New</Option>
@@ -218,7 +209,7 @@ const ComplaintList = () => {
                     )
                 },
             dataIndex: 'complaint_status',
-            key: 'complaint_status',
+            
             render: (_, record) => (
                 <>
                     <Space className='complaintList-status' style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", textAlign: "left" }}>
@@ -253,7 +244,7 @@ const ComplaintList = () => {
                                         color: "#4b89ad",
                                     }}
                                     bordered={false}
-                                    onSelect={(value) => { value === "Show All" ? setData(complaints.data) : handleSortDivision(value) }}
+                                    onSelect={(value) => { value === "Show All" ? setComplaints(baseData) : handleSortDivision(value) }}
                                 >
                                     <Option value="Show All">Show All</Option>
                                     {divisionForSort.map(division => {
@@ -267,7 +258,7 @@ const ComplaintList = () => {
                         </div>
                     )
                 },
-            key: 'product',
+            
             dataIndex: 'product',
             render: (_, record) => {
                 return (
@@ -279,12 +270,19 @@ const ComplaintList = () => {
         },
         {
             title: (<div className='complaintList-title'>Complaint Assigned To</div>),
-            key: 'complaint_assign_to',
+            
             dataIndex: 'complaint_assign_to',
+            render: (_, record) => {
+                return (
+                    <div>
+                        {record.complaint_assign_to.name}
+                    </div>
+                )
+            }
         },
         {
             title: 'Created Date',
-            key: 'created_date',
+            
             dataIndex: 'created_date',
             render: (_, record) => {
                 return (
@@ -296,13 +294,13 @@ const ComplaintList = () => {
         },
         {
             title: (<div className='complaintList-title'>Country</div>),
-            key: 'country_of_event',
+            
             dataIndex: 'country_of_event',
             render: (text) => <div className='complaintList-text'>{text}</div>,
         },
         {
             title: (<div className='complaintList-title'>Product Name</div>),
-            key: 'product_name',
+            
             dataIndex: 'product',
             render: (_, record) => {
                 return (
@@ -314,7 +312,7 @@ const ComplaintList = () => {
         },
         {
             title: (<div className='complaintList-title'>OEM Supplier</div>),
-            key: 'oem',
+            
             dataIndex: 'product',
             render: (_, record) => {
                 return (
@@ -326,7 +324,7 @@ const ComplaintList = () => {
         },
         {
             title: (<div className='complaintList-title'>Product Return</div>),
-            key: 'productReturn',
+            
             dataIndex: 'productReturn',
             render: (text) => <div className='complaintList-text'>{text}</div>,
         },
@@ -367,7 +365,7 @@ const ComplaintList = () => {
                     <div>
                         <Row style={{ alignItems: "center" }}>
                             <Col className='complaintList-searchContainer' flex={6} style={{ display: "flex", }}>
-                                <SearchForm handleChange={(e) => setInput(e.target.value)} />
+                                <SearchForm handleChange={(e) => setInput(e.target.value)} placeholder={searchPlaceHolder} />
                                 <Button
                                     type="primary"
                                     icon={<ExportOutlined style={{ fontSize: "20px", }} />}
@@ -406,10 +404,11 @@ const ComplaintList = () => {
                 <Table
                     pagination={{ style: { display: 'none' } }}
                     columns={columns}
-                    dataSource={[...data]}
+                    dataSource={[...complaints]}
                     className="tableComplaintList"
                     bordered={false}
                     style={{ border: "1px solid #f0f0f0" }}
+                    rowKey="complaint_id"
                 />
 
                 {/* <div>{data[0].complaint_id}</div> */}

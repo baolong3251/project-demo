@@ -1,5 +1,6 @@
-import { Checkbox, Divider, Card, Typography, Space, Form } from 'antd';
+import { Checkbox, Divider, Card, Typography, Space, Col, Row } from 'antd';
 import { useState } from 'react';
+import "./style-exportExcelCheckbox.css"
 
 const CheckboxGroup = Checkbox.Group;
 
@@ -14,21 +15,21 @@ const ExportExcelCheckBox = (props) => {
 
     const onChange = (list) => {
         setCheckedList(list);
+        props.setDataGroup(list)
         setIndeterminate(!!list.length && list.length < plainOptions.length);
         setCheckAll(list.length === plainOptions.length);
-        props.handleGetData(list)
     };
 
     const onCheckAllChange = (e) => {
         setCheckedList(e.target.checked ? plainOptions : []);
+        props.setDataGroup(e.target.checked ? plainOptions : [])
         setIndeterminate(false);
         setCheckAll(e.target.checked);
-        props.handleGetData(plainOptions)
     };
     
     return (
         <>
-            <Card >
+            <Card className='exportExcel-cardContainer'>
                 <Space size={'large'}>
                     <Text style={{ color: "#2e6486" }} strong>{props.title}</Text>
                     <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
@@ -36,9 +37,17 @@ const ExportExcelCheckBox = (props) => {
                     </Checkbox>
                 </Space>
                 <Divider style={{ border: "none", marginBottom: "0" }} />
-                <Form.Item>
-                    <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} />
-                </Form.Item>
+                <CheckboxGroup value={checkedList} onChange={onChange} style={{width: "100%"}}>
+                    <Row>
+                        {plainOptions.map(option => {
+                            return(
+                                <Col style={{marginBottom: "12px"}} key={option} span={6}>
+                                    <Checkbox value={option}>{option}</Checkbox>
+                                </Col>
+                            )
+                        })}  
+                    </Row>
+                </CheckboxGroup>
             </Card>
         </>
     )

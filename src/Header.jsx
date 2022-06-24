@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
     DownOutlined,
     UserOutlined, 
     RightOutlined,
     PlusCircleOutlined,
+    AlignRightOutlined,
+    AlignLeftOutlined
 } from '@ant-design/icons';
 import { Menu, Button, Space, Dropdown, Avatar  } from 'antd';
 import "./style_header.css"
@@ -59,13 +59,13 @@ const Header = (props) => {
                 }}
             >
                 <div>
-                    {React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    {React.createElement(props.collapsed ? AlignLeftOutlined : AlignRightOutlined, {
                         className: 'trigger',
                         onClick: () => props.setCollapsed(!props.collapsed),
                     })}
                     <Button type='link'>something</Button>
                 
-                    <RightOutlined />
+                        <RightOutlined />
 
                     <Button type='link'>something</Button>
                 </div>

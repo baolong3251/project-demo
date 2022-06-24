@@ -7,6 +7,7 @@ import { Space, Table, Button, Col, Row, Typography, Pagination, Select } from '
 import { LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
 import SearchForm from './SearchForm';
 import Data from "./response_1655451432472.json"
+import ExportExcelComplaintsList from './ExportExcelComplaintsList'
 
 const TestPage = () => {
     const [showModal, setShowModal] = useState(false)
@@ -23,8 +24,8 @@ const TestPage = () => {
         // }
         
         var arr = dataForExport.concat(value)
-        var actualArr = arr.filter(b => value.some(a => a === b))
-            actualArr = actualArr.filter((item, pos) => actualArr.indexOf(item) === pos)
+        // var actualArr = arr.filter(b => value.some(a => a === b))
+        var actualArr = arr.filter((item, pos) => arr.indexOf(item) === pos)
         setDataForExport(actualArr)
     }
 
@@ -71,11 +72,12 @@ const TestPage = () => {
             <Button type="primary" onClick={() => setShowModal(!showModal)}>
                 Open Modal
             </Button>
-            <ExportExcelModal handleExportData={handleExportData} visible={showModal} setShow={setShowModal}>
+            <ExportExcelComplaintsList visible={showModal} setShow={setShowModal} />
+            {/* <ExportExcelModal handleExportData={handleExportData} visible={showModal} setShow={setShowModal}>
                 <ExportExcelCheckBox handleGetData={handleGetData} options={["PR Status", "Product Received Date (BSC)", "Contact", "Planned-Packing Date"]} title={"Basic Information"} />
                 <ExportExcelCheckBox handleGetData={handleGetData} options={["BR Status", "Product Send Date (BSC)", "Contract into", "Planned-release Date"]} title={"Basic Information"} />
                 <ExportExcelCheckBox handleGetData={handleGetData} options={["CR Status", "Product caca Date (BSC)", "Consact", "Planned-nice Date"]} title={"Basic Information"} />
-            </ExportExcelModal>
+            </ExportExcelModal> */}
         </div>
     )
 }

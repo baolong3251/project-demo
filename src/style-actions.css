@@ -1,0 +1,38 @@
+.actions{
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid #f0f0f0;
+}
+
+.actions .ant-card-body {
+    padding: 5px;
+}
+
+.actions-collapse .ant-collapse-arrow{
+    color: #4b89ad!important;
+}
+
+.actions-collapsePanel .ant-collapse-header-text{
+    color: #4b89ad!important;
+    font-weight: 500;
+}
+
+.actions-formItem{
+    margin-bottom: 15px;
+}
+
+.actions-container{
+    display: flex;
+    align-items: center;
+}
+
+.actions-textInput{
+    font-size: 14px;
+}
+
+.actions-icon{
+    font-size: 24px;
+    color: #004072;
+    margin-left: 10px;
+    cursor: pointer;
+}

@@ -32,14 +32,9 @@ const ExportExcelModal = ({ handleExportData, visible, children, setShow }) => {
                 }
             >
                 <Space direction="vertical" size="middle" style={{ display: 'flex', }}>
-                    {/* <ExportExcelCheckBox options={["PR Status", "Product Received Date (BSC)", "Contact", "Planned-Packing Date"]} title={"Basic Information"} />
-
-                    <ExportExcelCheckBox />
-
-                    <ExportExcelCheckBox /> */}
-                    <Form>
-                        {children}
-                    </Form>
+                    
+                    {children}
+                    
                     
                 </Space>
             </Modal>
