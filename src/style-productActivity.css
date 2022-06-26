@@ -1,0 +1,26 @@
+.productActivity-timelineContainer{
+    padding: 10px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.productActivity-timelineItem-head .ant-timeline-item-head-custom{
+    left: 40px;
+}
+
+.productActivity-timelineItem-headTag{
+    border-radius: 15px;
+    margin-right: 10px;
+    left: 100px;
+    color: #004072;
+    font-weight: 500;
+    border: none;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.productActivity-timelineContainer .dotIcon{
+    color: black;
+    font-size: 18px;
+}

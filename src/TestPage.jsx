@@ -8,6 +8,7 @@ import { LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
 import SearchForm from './SearchForm';
 import Data from "./response_1655451432472.json"
 import ExportExcelComplaintsList from './ExportExcelComplaintsList'
+import ProductActivity from './ProductActivity'
 
 const TestPage = () => {
     const [showModal, setShowModal] = useState(false)
@@ -36,7 +37,7 @@ const TestPage = () => {
     console.log(dataForExport)
 
     return (
-        <div>
+        <div style={{background: "white"}}>
             <Row style={{ padding: "10px", background: "#f7f8fa", alignItems: "center" }}>
                 <Col flex={3}>
 
@@ -73,11 +74,7 @@ const TestPage = () => {
                 Open Modal
             </Button>
             <ExportExcelComplaintsList visible={showModal} setShow={setShowModal} />
-            {/* <ExportExcelModal handleExportData={handleExportData} visible={showModal} setShow={setShowModal}>
-                <ExportExcelCheckBox handleGetData={handleGetData} options={["PR Status", "Product Received Date (BSC)", "Contact", "Planned-Packing Date"]} title={"Basic Information"} />
-                <ExportExcelCheckBox handleGetData={handleGetData} options={["BR Status", "Product Send Date (BSC)", "Contract into", "Planned-release Date"]} title={"Basic Information"} />
-                <ExportExcelCheckBox handleGetData={handleGetData} options={["CR Status", "Product caca Date (BSC)", "Consact", "Planned-nice Date"]} title={"Basic Information"} />
-            </ExportExcelModal> */}
+            <ProductActivity />
         </div>
     )
 }

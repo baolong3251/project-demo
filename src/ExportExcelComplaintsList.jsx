@@ -10,6 +10,15 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
     const [dataGroup1, setDataGroup1] = useState([])
     const [dataGroup2, setDataGroup2] = useState([])
     const [dataGroup3, setDataGroup3] = useState([])
+    const [dataGroup4, setDataGroup4] = useState([])
+    const [dataGroup5, setDataGroup5] = useState([])
+    const [dataGroup6, setDataGroup6] = useState([])
+    const [dataGroup7, setDataGroup7] = useState([])
+    const [dataGroup8, setDataGroup8] = useState([])
+    const [dataGroup9, setDataGroup9] = useState([])
+    const [dataGroup10, setDataGroup10] = useState([])
+    const [dataGroup11, setDataGroup11] = useState([])
+    const [dataGroup12, setDataGroup12] = useState([])
 
     const groupOptions = [
         [
@@ -50,16 +59,20 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
             "Intended Use", "Tortuous severity", "Percentage of stenosis", "Calcification severity",
         ],
         [
-            "Product Type 1", "Tortuous severity", "Percentage of stenosis", "Calcification severity",
+            "Product Type 1", "Product Type 2", "Product Type 3", "Product Type 4",
+            "Product Type 5", "Product Type 6", "Product Type 7", "Product Type 8",
         ],
         [
-            "Intended Use", "Tortuous severity", "Percentage of stenosis", "Calcification severity",
+            "Other Product used 1", "Other Product used 2", "Other Product used 3", "Other Product used 4",
+            "Other Product used 5", "Other Product used 6", "Other Product used 7", "Other Product used 8",
         ],
         [
-            "Intended Use", "Tortuous severity", "Percentage of stenosis", "Calcification severity",
+            "Name of Product 1", "Name of Product 2", "Name of Product 3", "Name of Product 4",
+            "Name of Product 5", "Name of Product 6", "Name of Product 7", "Name of Product 8",
         ],
         [
-            "Intended Use", "Tortuous severity", "Percentage of stenosis", "Calcification severity",
+            "Status of Use 1", "Status of Use 2", "Status of Use 3", "Status of Use 4",
+            "Status of Use 5", "Status of Use 6", "Status of Use 7", "Status of Use 8",
         ],
     ]
 
@@ -72,14 +85,27 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
 
     const handleExportData = () => {
         var data = []
-        data = data.concat(dataGroup1, dataGroup2, dataGroup3)
+        data = data.concat(
+            dataGroup1, 
+            dataGroup2, 
+            dataGroup3, 
+            dataGroup4,
+            dataGroup5,
+            dataGroup6,
+            dataGroup7,
+            dataGroup8,
+            dataGroup9,
+            dataGroup10,
+            dataGroup11,
+            dataGroup12
+        )
         console.log(data)
     }
 
     return (
-        <>
+        <div>
             <Modal
-                width={1500}
+                width={1300}
                 title={<div style={{ color: "#2e6486" }}>Select Export Fields</div>}
                 visible={visible}
                 onCancel={handleCancel}
@@ -99,8 +125,8 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
                         <Divider style={{ border: "none", marginBottom: "0" }} />
                         <Space direction="vertical" size="middle" style={{ display: 'flex', margin:"0", padding: "0" }}>
                             <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[2]} title={"Facility Information"} />
-                            <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[3]} title={"Initial Reporter Information"} />
-                            <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[4]} title={"BSC Sales Rep Information"} />
+                            <ExportExcelCheckBox setDataGroup={setDataGroup4} options={groupOptions[3]} title={"Initial Reporter Information"} />
+                            <ExportExcelCheckBox setDataGroup={setDataGroup5} options={groupOptions[4]} title={"BSC Sales Rep Information"} />
                         </Space>
                     </Card>
                     
@@ -109,19 +135,19 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
                         <Divider style={{ border: "none", marginBottom: "0" }} />
                         <Space direction="vertical" size="middle" style={{ display: 'flex', margin:"0", padding: "0" }}>
                             <Space direction="vertical" size="middle" style={{ display: 'flex', margin:"0", padding: "0" }}>
-                                <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[5]} title={"Event Detail"} />
-                                <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[6]} title={"Patient Information"} />
-                                <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[7]} title={"Cardiovascular case data"} />
+                                <ExportExcelCheckBox setDataGroup={setDataGroup6} options={groupOptions[5]} title={"Event Detail"} />
+                                <ExportExcelCheckBox setDataGroup={setDataGroup7} options={groupOptions[6]} title={"Patient Information"} />
+                                <ExportExcelCheckBox setDataGroup={setDataGroup8} options={groupOptions[7]} title={"Cardiovascular case data"} />
                             </Space>
 
                             <Card className='exportExcel-cardContainer'>
                                 <Text style={{ color: "#2e6486" }} strong>Other Product Information</Text>
                                 <Divider style={{ border: "none", marginBottom: "0" }} />
                                 <Space direction="vertical" size="middle" style={{ display: 'flex', margin:"0", padding: "0" }}>
-                                    <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[8]} title={"Product Type"} />
-                                    <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[9]} title={"Other Product used"} />
-                                    <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[10]} title={"Name of Product"} />
-                                    <ExportExcelCheckBox setDataGroup={setDataGroup3} options={groupOptions[11]} title={"Status of Use"} />
+                                    <ExportExcelCheckBox setDataGroup={setDataGroup9} options={groupOptions[8]} title={"Product Type"} />
+                                    <ExportExcelCheckBox setDataGroup={setDataGroup10} options={groupOptions[9]} title={"Other Product used"} />
+                                    <ExportExcelCheckBox setDataGroup={setDataGroup11} options={groupOptions[10]} title={"Name of Product"} />
+                                    <ExportExcelCheckBox setDataGroup={setDataGroup12} options={groupOptions[11]} title={"Status of Use"} />
                                 </Space>
                             </Card>
                         </Space>
@@ -130,7 +156,7 @@ const ExportExcelComplaintsList = ({ visible, setShow }) => {
 
                 </Space>
             </Modal>
-        </>
+        </div>
     )
 }
 
