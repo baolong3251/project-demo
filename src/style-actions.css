@@ -30,6 +30,11 @@
     font-size: 14px;
 }
 
+.actions-iconLink{
+    display: flex;
+    align-items: center;
+}
+
 .actions-icon{
     font-size: 24px;
     color: #004072;

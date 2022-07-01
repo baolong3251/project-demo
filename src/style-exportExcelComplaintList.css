@@ -1,0 +1,43 @@
+.exportExcel-modalTitle{
+    color: #2e6486;
+}
+
+.exportExcel-modalFooter{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.exportExcel-modalButton{
+    background-color: #00558f;
+    border-radius: 10px;
+}
+
+.exportExcel-modalButton-icon{
+    font-size: 16px;
+}
+
+.exportExcel-modalContainer{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.exportExcel-cardText{
+    color: #2e6486;
+}
+
+@media only screen and (max-width: 739px) {
+
+    .exportExcel-modal{
+        
+        width: 739px!important; 
+        overflow-x: scroll!important;
+    }
+
+    .ant-modal{
+        max-width: 739px!important; 
+        overflow-x: scroll!important;
+    }
+
+}

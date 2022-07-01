@@ -42,7 +42,7 @@ const ExportExcelCheckBox = (props) => {
                         {plainOptions.map(option => {
                             return(
                                 <Col style={{marginBottom: "12px"}} key={option} span={6}>
-                                    <Checkbox value={option}>{option}</Checkbox>
+                                    <Checkbox value={option}>{props.enumData[option]}</Checkbox>
                                 </Col>
                             )
                         })}  

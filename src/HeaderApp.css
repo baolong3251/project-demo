@@ -77,9 +77,9 @@
 
 /* Tab and ipad */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
-    .row1 {
+    /* .row1 {
         min-width: 100px;
-    }
+    } */
 }
 
 /* mobile */

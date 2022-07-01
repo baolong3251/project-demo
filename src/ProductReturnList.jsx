@@ -10,111 +10,24 @@ import axios from 'axios';
 const { Option } = Select;
 const searchPlaceHolder = "Search OEM Supllier, Complaint ID, Product Name, JPOS/CIPI, Division, Complaint Assigned To, Country"
 
-
-// import getCom from 
-
-// getCom
-
-// const response = await getCom()
-
-const ComplaintList = () => {
-    const [_, forceUpdate] = useReducer(x => x + 1, 0);
+const ProductReturnList = () => {
     const [input, setInput] = useState('')
-    const [divisionForSort, setDivsionForSort] = useState([])
-    const [complaints, setComplaints] = useState([])
-    const [baseData, setBaseData] = useState([]);
+    const [productReturns, setProductReturns] = useState([])
 
     useEffect(() => {
-        const getComplaints = async () => {
+        const getProductReturns = async () => {
             const response = await axios.get("http://10.0.106.10:3001/api/v1/complaints", {
                 headers: {
                     Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6IlFBIiwiaWF0IjoxNjU1OTU5NjMwLCJleHAiOjE2NTY2Nzk2MzB9.Zp5W7BXZqhbMMm0eg4fLLLiBxhLP_uG6vPe71JHsQM8`,
                 },
             });
-            setComplaints(response.data.data.items);
-            setBaseData(response.data.data.items)
+            setProductReturns(response.data.data.items);
         };
         
-        getComplaints();
+        getProductReturns();
     
     }, [])
 
-    useEffect(() => {
-        const getData = () => {
-            const arrUniq = [...new Map(baseData.map(v => [v.product.division.slice(9), v])).values()]
-            const newArray = arrUniq.map((arr) => arr.product.division.slice(9))
-            setDivsionForSort(newArray)
-        };
-        getData();
-    }, [baseData])
-
-    const handleSortAsc = () => {
-        var newArray = baseData
-        newArray = newArray.sort((a, b) => {
-            return a.complaint_id - b.complaint_id;
-        })
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    const handleSortJposCipiDesc = () => {
-        var newArray = baseData
-        newArray = newArray.sort((a, b) => {
-            return b.jpos_cipi_id.localeCompare(a.jpos_cipi_id);
-        })
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    const handleSortJposCipiAsc = () => {
-        var newArray = baseData
-        newArray = newArray.sort((a, b) => {
-            return a.jpos_cipi_id.localeCompare(b.jpos_cipi_id);
-        })
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    const handleSortDesc = () => {
-        var newArray = baseData
-        newArray = newArray.sort((a, b) => {
-            return b.complaint_id - a.complaint_id;
-        })
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    const handleSortStatus = (value) => {
-        var newArray = baseData
-        newArray = newArray.filter((x) => x.complaint_status === value)
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    const handleSortDivision = (value) => {
-        var newArray = baseData
-        newArray = newArray.filter((x) => x.product.division.slice(9) === value)
-        setComplaints(newArray)
-        forceUpdate()
-    }
-
-    useEffect(() => {
-
-
-        const filteredData = baseData?.filter(
-            (x) => x?.complaint_id?.toString().toLowerCase().includes(input.toLowerCase()) ||
-                x?.product?.oem?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.product?.product_name?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.jpos_cipi_id?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.complaint_status?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.complaint_assign_to?.name?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.product?.division?.slice(9)?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.country_of_event?.toLowerCase().includes(input.toLowerCase()) ||
-                x?.productReturn?.toLowerCase().includes(input.toLowerCase())
-        )
-        setComplaints(filteredData)
-
-    }, [input])
 
     const columns = [
         {
@@ -122,25 +35,21 @@ const ComplaintList = () => {
                 () => {
                     
                     return (
-                        <div className='complaintList-title'>
-                            {/* Complaint ID */}
-
+                        <div className='productReturn-title'>
                             {<>
                                 <Select
                                     defaultValue="desc"
-                                    value={"Complaint ID"}
+                                    value={"PR ID"}
                                     style={{
                                         color: "#4b89ad",
                                     }}
                                     bordered={false}
-                                    onSelect={(value) => { value === "desc" ? handleSortDesc() : handleSortAsc() }}
+                                    
                                 >
-                                    <Option value="desc">Desc</Option>
-                                    <Option value="asc">Asc</Option>
+                                    
                                 </Select>
 
                             </>}
-
                         </div>
                     )
                 },
@@ -158,16 +67,15 @@ const ComplaintList = () => {
 
                             {<>
                                 <Select
-                                    defaultValue="JPOS/CIPI"
-                                    value={"JPOS/CIPI"}
+                                    defaultValue=""
+                                    value={"Complaint ID"}
                                     style={{
                                         color: "#4b89ad",
                                     }}
                                     bordered={false}
-                                    onSelect={(value) => { value === "desc" ? handleSortJposCipiDesc() : handleSortJposCipiAsc() }}
+                                    
                                 >
-                                    <Option value="desc">Desc</Option>
-                                    <Option value="asc">Asc</Option>
+                                    
                                 </Select>
 
                             </>}
@@ -404,7 +312,7 @@ const ComplaintList = () => {
                 <Table
                     pagination={{ style: { display: 'none' } }}
                     columns={columns}
-                    dataSource={[...complaints]}
+                    dataSource={[...productReturns]}
                     className="tableComplaintList"
                     bordered={false}
                     style={{ border: "1px solid #f0f0f0" }}
@@ -417,4 +325,4 @@ const ComplaintList = () => {
     )
 }
 
-export default ComplaintList
+export default ProductReturnList

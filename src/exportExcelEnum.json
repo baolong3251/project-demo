@@ -1,0 +1,130 @@
+{
+    "data": {
+        "basic_information": {
+            "complaint_id": "Complaint ID",
+            "business_division": "Business Division",
+            "jpos_cipi_id": "JPOS/CIPI",
+            "complaint_assigned_to": "Complaint Assigned To",
+            "related_complaint_id": "Related Complaint ID",
+            "status": "Status",
+            "oem_reference_number": "OEM Reference Number",
+            "product_available_for_return": "Product Available for Return?",
+            "reason_for_no_product_return": "Reason for NO Product Return",
+            "country_of_event": "Country of Event",
+            "event_description": "Event_Description",
+            "crl_requested": "CRL Requested?",
+            "bsc_aware_date": "BSC Aware Date",
+            "complaint_reviewed_date_japan": "Complaint Reviewed Date (Japan)",
+            "oem_notification_date": "OEM Notification Date",
+            "created_date": "Created Date",
+            "message_to_qa": "Message to QA"
+        },
+        "product_details": {
+            "product_name": "Product Name",
+            "model_number": "Model Number",
+            "upn": "UPN",
+            "catalog_number": "Catalog Number",
+            "serial_number": "Serial Number",
+            "oem_supplier_name": "OEM Supplier's Name",
+            "product_family": "Product Family",
+            "batch_lot_number": "Batch/Lot Number",
+            "ar_code": "AR Code (Optional)",
+            "local_product_licence_number": "Local Product Licence Number",
+            "cmp": "CMP# (Japan Only)",
+            "quantity_of_product_return": "Quantity of Product Return",
+            "oem_requirement": "OEM Requirement (Japan)"
+        },
+        "facility_information": {
+            "facility_name": "Facility Name",
+            "physician_department": "Physician's Department",
+            "physician_name": "Physician's Name",
+            "facility_sap_code": "Facility Sap Code#",
+            "crl_send_to": "CRL Send To",
+            "state_province": "State/Province"
+        },
+        "initial_reporter_information": {
+            "initial_reporter_title": "Initial Reporter Title",
+            "initial_reporter_name": "Initial Reporter Name"
+        },
+        "bsc_sales_rep_information": {
+            "bsc_reporter_information": "BSC Reporter Information",
+            "manager_name": "Manager's Name"
+        },
+        "event_detail": {
+            "event_description_in_local_language": "Event Description in Local Language",
+            "event_description_in_english": "Event Description in English",
+            "physician's_comment": "Physician's Comment",
+            "event_date": "Event Date",
+            "procedure_date": "Procedure Date",
+            "type_of_procedure": "Type of Procedure",
+            "anatomy_location": "Anatomy Location",
+            "diagnosis_or_treatment?": "Diagnosis or Treatment?",
+            "resolution": "Resolution",
+            "time_of_event": "Time of Event",
+            "where_did_event_occur?": "Where did Event Occur?",
+            "patient_outcome": "Patient Outcome",
+            "first_time_the_unit_was_used": "First time the unit was used?",
+            "reprocessed_resterilized": "Reprocessed/Resterilized?",
+            "use_before_expiry_date": "Use Before Expiry Date?",
+            "inspected_prior_to_use": "Inspected prior to use?",
+            "infectious_product": "Infectious Product?",
+            "infection_name": "Infection Name"
+        },
+        "patient_information": {
+            "last_name": "Last Name",
+            "first_name": "First Name",
+            "identifier": "Identifier",
+            "gender": "Gender",
+            "date_of_birth": "Date Of Birth",
+            "age_at_time_of_event": "Age at Time of Event",
+            "patient_is_under_18": "Patient Is Under 18?",
+            "weight": "Weight (kg)"
+        },
+        "cardiovascular_case_data": {
+            "intended_use": "Intended Use",
+            "tortuous_severity": "Tortuous severity",
+            "percentage_of_stenosis": "Percentage of stenosis",
+            "calcification_severity": "Calcification severity"
+        },
+        "product_type": {
+            "product_type_1": "Product Type 1",
+            "product_type_2": "Product Type 2",
+            "product_type_3": "Product Type 3",
+            "product_type_4": "Product Type 4",
+            "product_type_5": "Product Type 5",
+            "product_type_6": "Product Type 6",
+            "product_type_7": "Product Type 7",
+            "product_type_8": "Product Type 8"
+        },
+        "other_product_used": {
+            "other_product_used_1": "Other Product used 1",
+            "other_product_used_2": "Other Product used 2",
+            "other_product_used_3": "Other Product used 3",
+            "other_product_used_4": "Other Product used 4",
+            "other_product_used_5": "Other Product used 5",
+            "other_product_used_6": "Other Product used 6",
+            "other_product_used_7": "Other Product used 7",
+            "other_product_used_8": "Other Product used 8"
+        },
+        "name_of_product": {
+            "name_of_product_1": "Name of Product 1",
+            "name_of_product_2": "Name of Product 2",
+            "name_of_product_3": "Name of Product 3",
+            "name_of_product_4": "Name of Product 4",
+            "name_of_product_5": "Name of Product 5",
+            "name_of_product_6": "Name of Product 6",
+            "name_of_product_7": "Name of Product 7",
+            "name_of_product_8": "Name of Product 8"
+        },
+        "status_of_use": {
+            "status_of_use_1": "Status of Use 1",
+            "status_of_use_2": "Status of Use 2",
+            "status_of_use_3": "Status of Use 3",
+            "status_of_use_4": "Status of Use 4",
+            "status_of_use_5": "Status of Use 5",
+            "status_of_use_6": "Status of Use 6",
+            "status_of_use_7": "Status of Use 7",
+            "status_of_use_8": "Status of Use 8"
+        }
+    }
+}

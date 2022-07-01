@@ -1,0 +1,21 @@
+import axiosClient from './axiosClient';
+const complaintApi = {
+  getAllComplaint() {
+    const url = '/complaints';
+    return axiosClient.get(url);
+  },
+
+  getComplaintDetail(id) {
+    const url = `/complaints/${id}`;
+    return axiosClient.get(url);
+  },
+  searchComplaint(value) {
+    const url = `/complaints?key=${value}`;
+    return axiosClient.get(url);
+  },
+  getMyComplaint(value) {
+    const url = `/complaints?myComplaint=${value}`;
+    return axiosClient.get(url);
+  },
+};
+export default complaintApi;

@@ -1,0 +1,269 @@
+import React, { useEffect, useState } from 'react';
+import { Space, Table, Button, Col, Row, Select, Dropdown, Menu, Badge } from 'antd';
+import {
+  DownOutlined,
+  ExportOutlined,
+  LeftSquareOutlined,
+} from '@ant-design/icons';
+
+import { Link } from 'react-router-dom';
+import './style-tableComplaintList.css';
+import moment from 'moment';
+import complaintApi from '../../service/complaintService';
+import SearchForm from '../../components/search/SearchForm';
+import { ROUTER } from '../../constants/constants';
+import { searchComplaint } from '../../actions/complaint';
+import enumData from "../../enum/complaintEnum.json"
+
+const { Option } = Select;
+const CONTANST_SEARCHPLACEHOLDER =
+  'Search OEM Supllier, Complaint ID, Product Name, JPOS/CIPI, Division, Complaint Assigned To, Country';
+const CONTANST_COMPLAINTIDLINK = ROUTER.COMPAINT_DETAIL;
+const CONTANST_PAGESIZE = 20
+
+const ComplaintList = () => {
+  const [input, setInput] = useState('');
+  const [complaints, setComplaints] = useState([]);
+
+  useEffect(() => {
+    const getComplaints = async () => {
+      try {
+        const response = await complaintApi.getAllComplaint();
+        setComplaints(response.data.items);
+      } catch (error) {}
+    };
+
+    getComplaints();
+  }, []);
+
+  useEffect(() => {
+    const value = input;
+    const delaySearch = setTimeout(() => {
+      (async () => {
+        try {
+          const res = await searchComplaint(value);
+          setComplaints(res.data.items);
+        } catch (error) {}
+      })();
+    }, 800);
+    return () => clearTimeout(delaySearch);
+  }, [input]);
+
+  const addStatusColor = (value) => {
+    switch (value) {
+      case 'New':
+        return '#108108';
+      case 'Closed':
+        return '#585858';
+      case 'Processing':
+        return 'magenta';
+      case 'Cancelled':
+        return 'red';
+      case 'Reopen':
+        return '#088aa1';
+    }
+  };
+
+  const onDropDownClick = ({ key }) => {
+    const getMyComplaints = async () => {
+      try {
+        const response = await complaintApi.getMyComplaint(key);
+        setComplaints(response.data.items);
+      } catch (error) {}
+    };
+    getMyComplaints();
+  };
+
+  const columns = [
+    {
+      title: () => {
+        return (
+          <div className="complaintList-title">
+            Complaint ID
+            <DownOutlined className='sortIcon' />
+          </div>
+        );
+      },
+      dataIndex: 'complaint_id',
+      key: 'complaint_id',
+      render: (_, record) => (
+        <Link
+          to={`/${CONTANST_COMPLAINTIDLINK.replace(':id', record.complaint_id)}`}
+          className="complaintList-link"
+        >
+          {record.complaint_code}
+        </Link>
+      ),
+    },
+    {
+      title: () => {
+        return (
+          <div className="complaintList-title">
+            JPOS/CIPI
+            <DownOutlined className='sortIcon' />
+          </div>
+        );
+      },
+      dataIndex: 'jpos_cipi_id',
+      key: 'jpos_cipi_id',
+      render: (text) => <div className="complaintList-text">{text}</div>,
+    },
+    {
+      title: () => {
+        return (
+          <div className="complaintList-title">
+            Status
+            <DownOutlined className='sortIcon' />
+          </div>
+        );
+      },
+      dataIndex: 'complaint_status',
+      key: 'complaint_status',
+      render: (_, record) => (
+        <>
+          <Space className="complaintList-status">
+            <Badge className="complaintList-statusBadge" color={addStatusColor(record.complaint_status)} />
+            <div className="complaintList-statusText">{enumData.data.ComplaintStatus[record.complaint_status]}</div>
+          </Space>
+        </>
+      ),
+    },
+    {
+      title: () => {
+        return (
+          <div className="complaintList-title">
+            Division
+            <DownOutlined className='sortIcon' />
+          </div>
+        );
+      },
+      key: 'division',
+      dataIndex: 'division',
+      render: (_, record) => {
+        return <div className="complaintList-text">{record.product.division}</div>;
+      },
+    },
+    {
+      title: <div className="complaintList-title">Complaint Assigned To</div>,
+      key: 'complaint_assign_to',
+      dataIndex: 'complaint_assign_to',
+      render: (_, record) => {
+        return <div>{record.complaint_assign_to.name}</div>;
+      },
+    },
+    {
+      title: 'Created Date',
+      key: 'created_date',
+      dataIndex: 'created_date',
+      render: (_, record) => {
+        return (
+          <div className="complaintList-text">
+            {moment(record.created_date).format('YYYY/MM/DD')}
+          </div>
+        );
+      },
+    },
+    {
+      title: <div className="complaintList-title">Country</div>,
+      key: 'country_of_event',
+      dataIndex: 'country_of_event',
+      render: (text) => <div className="complaintList-text">{text}</div>,
+    },
+    {
+      title: <div className="complaintList-title">Product Name</div>,
+      key: 'product_name',
+      dataIndex: 'product_name',
+      render: (_, record) => {
+        return <div className="complaintList-text">{record.product.product_name}</div>;
+      },
+    },
+    {
+      title: <div className="complaintList-title">OEM Supplier</div>,
+      key: 'oem',
+      dataIndex: 'oem',
+      render: (_, record) => {
+        return <div className="complaintList-text">{record.product.supplier.supplier_name}</div>;
+      },
+    },
+    {
+      title: <div className="complaintList-title">Product Return</div>,
+      key: 'product_return',
+      dataIndex: 'product_return',
+      render: (_, record) => <div className="complaintList-text">{record.product_return === null ? null : record.product_return.product_status}</div>,
+    },
+  ];
+
+  return (
+    <>
+      <Row className="complaintList-header">
+        <Col flex={4}>
+          <Dropdown
+            overlay={
+              <Menu
+                onClick={onDropDownClick}
+                items={[
+                  {
+                    label: (<div className="complaintList-dropDown-label">My Complaint</div>),
+                    key: true,
+                  },
+                  {
+                    label: (<div className="complaintList-dropDown-label">All Complaint</div>),
+                    key: false,
+                  },
+                ]}
+                className="complaintList-dropDown"
+              />
+            }
+          >
+            <Button className="complaintList-dropDownButton">
+              <Space className="complaintList-dropDownButton-container">
+                <div className="complaintList-dropDownButton-text">My Complaint</div>
+                <DownOutlined className="complaintList-dropDownButton-icon" />
+              </Space>
+            </Button>
+          </Dropdown>
+        </Col>
+        <Col flex={8}>
+          <div>
+            <Row>
+              <Col className="complaintList-searchContainer" flex={6}>
+                <SearchForm
+                  handleChange={(e) => setInput(e.target.value)}
+                  value={input}
+                  placeholder={CONTANST_SEARCHPLACEHOLDER}
+                />
+                <Button
+                  type="primary"
+                  icon={<ExportOutlined className="complaintList-headerIcon" />}
+                  size="middle"
+                  className="complaintList-exportButton"
+                />
+              </Col>
+              <Col className="complaintList-filterShowContainer" flex={2}>
+                <Space>
+                  <Button
+                    type="primary"
+                    icon={<LeftSquareOutlined className="complaintList-headerIcon" />}
+                    size="middle"
+                    className="complaintList-filterButton"
+                  />
+                </Space>
+              </Col>
+            </Row>
+          </div>
+        </Col>
+      </Row>
+
+      <Table
+        pagination={{ pageSize: CONTANST_PAGESIZE, style: { display: 'none' } }}
+        columns={columns}
+        dataSource={[...complaints]}
+        className="tableComplaintList"
+        bordered={false}
+        rowKey="complaint_id"
+      />
+    </>
+  );
+};
+
+export default ComplaintList;

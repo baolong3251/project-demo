@@ -16,21 +16,21 @@ const Actions = () => {
               <Form.Item className='actions-formItem' name="productReturn" label="Product Return:">
                 <div className='actions-container'>
                   <Input placeholder="Waiting for Product Return" disabled />
-                  <RightCircleOutlined className='actions-icon' />
+                  <a className='actions-iconLink'><RightCircleOutlined className='actions-icon' /></a>
                 </div>
               </Form.Item>
 
               <Form.Item className='actions-formItem' name="productReturn" label="CRL:">
                 <div className='actions-container'>
                   <Input className='actions-textInput' placeholder="Not available" disabled />
-                  <PlusCircleOutlined className='actions-icon' />
+                  <a className='actions-iconLink'><PlusCircleOutlined className='actions-icon' /></a>
                 </div>
               </Form.Item>
 
               <Form.Item className='actions-formItem' name="productReturn" label="GFE:">
                 <div className='actions-container'>
                   <Input placeholder="Not available" disabled />
-                  <PlusCircleOutlined className='actions-icon' />
+                  <a className='actions-iconLink'><PlusCircleOutlined className='actions-icon' /></a>
                 </div>
               </Form.Item>
 

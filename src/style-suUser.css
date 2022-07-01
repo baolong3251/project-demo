@@ -1,0 +1,50 @@
+.table-SuUsers {
+    border: 1px solid #f0f0f0;
+    margin-top: 10px;
+}
+
+.table-SuUsers .ant-table-thead>tr>th {
+    color: #4b89ad;
+    background-color: #f3f6f8;
+}
+
+.suUsers-link{
+    color: #4b89ad;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.su-actions{
+    display: flex;
+    align-items: center;
+}
+
+.su-actions  .su-actions-switch{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    min-width: 36px;
+    background: white!important;
+    border: 1px solid #004072;
+}
+
+.su-actions-switch .ant-switch-checked {
+    background: white!important;
+}
+
+.su-actions-switch .ant-switch-handle{
+    top: 1px;
+}
+
+.su-actions-switch .ant-switch-handle::before{
+    background-color: #004072;
+}
+
+@media only screen and (max-width: 739px) {
+    .ant-table {
+        max-width: 739px;
+        overflow-x: scroll;
+    }
+
+
+}
