@@ -1,6 +1,6 @@
 import { Button, Modal, Typography, Space, Form } from 'antd';
 import { useState } from 'react';
-import ExportExcelCheckBox from './ExportExcelCheckBox';
+import ExportExcelGroupCheckBox from './ExportExcelGroupCheckBox';
 import { ExportOutlined } from '@ant-design/icons'
 
 const { Title, Text, Link } = Typography;

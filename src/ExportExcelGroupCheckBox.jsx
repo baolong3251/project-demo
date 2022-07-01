@@ -6,9 +6,9 @@ const CheckboxGroup = Checkbox.Group;
 
 const { Text } = Typography;
 
-const ExportExcelCheckBox = (props) => {
+const ExportExcelGroupCheckBox = (props) => {
     const [checkedList, setCheckedList] = useState();
-    const [indeterminate, setIndeterminate] = useState(true);
+    const [indeterminate, setIndeterminate] = useState(false);
     const [checkAll, setCheckAll] = useState(false);
 
     const plainOptions = props.options;
@@ -53,4 +53,4 @@ const ExportExcelCheckBox = (props) => {
     )
 }
 
-export default ExportExcelCheckBox
+export default ExportExcelGroupCheckBox

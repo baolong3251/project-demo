@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import ExportExcelCheckBox from './ExportExcelCheckBox'
+import ExportExcelGroupCheckBox from './ExportExcelGroupCheckBox'
 import ExportExcelModal from './ExportExcelModal'
 import { Space, Table, Button, Col, Row, Typography, Pagination, Select } from 'antd';
 import { LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
