@@ -9,6 +9,7 @@ import SearchForm from './SearchForm';
 import Data from "./response_1655451432472.json"
 import ExportExcelComplaintsList from './ExportExcelComplaintsList'
 import ProductActivity from './ProductActivity'
+import ExportExcelProductReturn from './ExportExcelProductReturn'
 
 const TestPage = () => {
     const [showModal, setShowModal] = useState(false)
@@ -73,7 +74,7 @@ const TestPage = () => {
             <Button type="primary" onClick={() => setShowModal(!showModal)}>
                 Open Modal
             </Button>
-            <ExportExcelComplaintsList visible={showModal} setShow={setShowModal} />
+            <ExportExcelProductReturn visible={showModal} setShow={setShowModal} />
             <ProductActivity />
         </div>
     )
